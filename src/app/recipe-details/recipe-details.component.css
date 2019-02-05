@@ -1,0 +1,8 @@
+.recipeDetailsContainer{
+    border: 1px solid purple;
+    background-color: bisque;
+    border-radius: 5px;
+    height: 20vh;
+    width: 20vw;
+    padding: 10px;
+}
