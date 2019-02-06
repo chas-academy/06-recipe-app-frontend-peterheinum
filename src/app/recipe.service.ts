@@ -7,7 +7,7 @@ import { recipes } from "./mock-recipes";
 })
 
 export class RecipeService {
-  public getRecipes(): Recipe[] {
+  getRecipes(): Recipe[] {
     return recipes;
   }
   constructor(private recipeService: RecipeService) { }

@@ -1,5 +1,12 @@
 <ul>
-  <li *ngFor="">
-    
+  <li *ngFor="let recepie of recipes">
+    {{recepie.name}}
+  </li>
+</ul>
+
+
+<ul">
+  <li *ngFor="let image of recipePictures" style="list-style:none;">
+    <img src={{image}} alt="" style="height:160px;width:190px;">
   </li>
 </ul>
