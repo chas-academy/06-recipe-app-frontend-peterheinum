@@ -4,6 +4,8 @@ import { RecipeService } from "../recipe.service";
 import { Recipe } from '../recipe';
 import { YummlyService } from "../yummly.service";
 import { HttpClient } from "@angular/common/http";
+import { Pipe, PipeTransform } from '@angular/core';
+
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,15 +13,12 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  recipes: any;
-  recipePictures: Recipe[];
-
+  @Input() recipeArray = [];
 
   
   constructor(
-    private recipeService: RecipeService,
     private yummlyService: YummlyService,
-
+    //private recipeService: RecipeService,
     ){}
 
   handleSearch(event: any){
@@ -27,17 +26,22 @@ export class RecipeListComponent implements OnInit {
   }
   
   ngOnInit() {
-   this.searchYummly('fish soup');
+    //this.recipePictures = this.recipeService.getRecipes();
+    // this.recipeArray.push(
+    //   "Fish Soup",
+    //   "Umbrian Fish Soup",
+    //   "Sicilian Fish Soup",
+    //   "Creamy Fish Soup",
+    //   "Icelandic Fish Soup",
+    //   "Sicilian Fish Soup",
+    //   "Easy Homemade Italian Fish Soup",
+    //   "Italian Fish Soup",
+    //   "Tunisian Fish Soup",
+    //   "Ling Fish Soup",
+    //   );
+    //console.log(this.recipeArray);
   }
 
-  searchYummly(searchQuery){
-    this.recipePictures = this.recipeService.getRecipes();
-    // this.yummlyService.getYummlyRecipes(searchQuery).subscribe(data => {
-    //   data.matches.forEach(element => {
-    //     console.log(element.imageUrlsBySize);
-    //     this.recipePictures.push(element.imageUrlsBySize[90]);
-    //   });
-    // });
-  }
+  
 
 }
