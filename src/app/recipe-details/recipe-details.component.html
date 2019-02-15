@@ -1,4 +1,9 @@
-<p>Hey man what's going on its peter here just wanted to let you know that you are awesome</p>
-
-{{recipe || async}}
-
+<div>
+  {{name | async}} 
+  <ul class="list-group">
+      <li class="list-group-item" *ngFor="let i of (ingredients | async)">
+        {{i}}
+      </li>
+    </ul>
+    <img src="{{image | async}}"  alt="...">
+</div>

@@ -1,14 +1,33 @@
-<div class="jumbotron">
-  <div class="row d-inline-block" style="border-radius:5px;" *ngFor="let recipeDetail of recipeArray">
-      <div class="card m-2" style="width: 16rem;">
-        <img src="{{recipeDetail.imageUrl}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{recipeDetail.recipeName}}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+<div class="input-group mb-3 m-3">
+  <input [(ngModel)]="searchQuery" type="text" class="form-control col-md-6" placeholder="Search for your dish"
+    aria-label="Search for dish" aria-describedby="basic-addon2">
+    <!-- <div class="form-check m-1 border rounded">
+      <input type="checkbox" [(ngModel)]="edamamcheck" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Edamam</label>
+    </div> -->
+    <!-- <div class="form-check m-1 border rounded">
+      <input type="checkbox" [(ngModel)]="yummlycheck" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Yummly</label>
+    </div> -->
+  <div class="input-group-append ml-3">
+    <button class="btn btn-outline-primary rounded" (click)="submit($event)" type="button">Search</button>
   </div>
+  <div class="spinner-border text-success ml-3" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
 
 
+
+
+<div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipeDetail of searchResult">
+  <div class="card m-3" style="width: 16rem;">
+    <img src="{{recipeDetail.imageUrl}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{recipeDetail.recipeName}}</h5>
+      <p class="card-text"> Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
+      <a href="#" routerLink="details/{{recipeDetail.recipeName}}&{{recipeDetail.urlId}}" class="btn btn-secondary">Recipe Details</a>
+    </div>
+  </div>
 </div>

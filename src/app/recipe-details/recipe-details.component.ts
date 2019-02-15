@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../recipe';
-import { Pipe, PipeTransform } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { EdamamService } from '../edamam.service';
+
 
 @Component({
   selector: 'app-recipe-details',
@@ -9,9 +11,25 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-  constructor(private recipe: Recipe) { }
+
+  recipe = this.snapshot.params.pipe(
+    map(params => params.id),
+    switchMap(id => this.edamamService.findDetails(id)),
+    map((data:any) => data.hits[0].recipe),
+    tap(console.log)
+    )
+
+    name = this.recipe.pipe(map(recipe => recipe.label));
+    ingredients = this.recipe.pipe(map(recipe => recipe.ingredientLines));
+    image = this.recipe.pipe(map(recipe => recipe.image));
+
+  constructor(
+    private snapshot: ActivatedRoute,
+    private edamamService: EdamamService,
+  ) { }
 
   ngOnInit() {
+    
   }
 
 }

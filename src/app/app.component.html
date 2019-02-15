@@ -1,11 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Recipe Search</a>
 </nav>
 
-<div class="input-group mb-3">
-    <input [(ngModel)]="searchQuery" type="text" class="form-control" placeholder="Search for your dish" aria-label="Search for dish" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" (click)="Submit($event)" type="button">Button</button>
-    </div>
-  </div>
-<app-recipe-list [recipeArray]="searchResult" ></app-recipe-list>
+<router-outlet></router-outlet>

@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-router.component';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
-
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
@@ -12,7 +11,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
   declarations: [
     AppComponent,
     RecipeDetailsComponent,
-    RecipeListComponent
+    RecipeListComponent,
   ],
   imports: [
     BrowserModule,
