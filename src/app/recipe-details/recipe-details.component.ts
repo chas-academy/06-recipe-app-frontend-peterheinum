@@ -18,7 +18,7 @@ export class RecipeDetailsComponent implements OnInit {
     map((data:any) => data.hits[0].recipe),
     tap(console.log)
     )
-
+    
     name = this.recipe.pipe(map(recipe => recipe.label));
     ingredients = this.recipe.pipe(map(recipe => recipe.ingredientLines));
     image = this.recipe.pipe(map(recipe => recipe.image));

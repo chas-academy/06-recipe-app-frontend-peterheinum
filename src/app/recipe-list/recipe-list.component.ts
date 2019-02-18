@@ -6,6 +6,7 @@ import { YummlyService } from "../yummly.service";
 import { HttpClient } from "@angular/common/http";
 import { Pipe, PipeTransform } from '@angular/core';
 import { EdamamService } from '../edamam.service';
+import { isUndefined } from 'util';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class RecipeListComponent implements OnInit {
     private edamamService: EdamamService,
   ) { }
 
-  
+
   handleSearch(event: any) {
     console.log(event.target.value);
   }
@@ -28,13 +29,15 @@ export class RecipeListComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  filterOption: any;
   title = 'recipes';
   searchQuery: string;
   edamamcheck: boolean;
   yummlycheck: boolean;
   searchResult = [];
- 
+  oldResult = [];
+  healthLabelArray = [];
+
   searchEdamam() {
     let allergies = [];
     let query: string;
@@ -51,14 +54,64 @@ export class RecipeListComponent implements OnInit {
       data.hits.forEach(e => {
         console.log(e);
         let temp: any;
+        let tempLabels = [];
         let uri = e.recipe.uri.split('recipe_')[1];
-        console.log(uri);
-        temp = { recipeName: e.recipe.label, imageUrl: e.recipe.image, urlId: uri }
+
+        e.recipe.healthLabels.map(healthLabel => {
+          this.healthLabelArray.push(healthLabel);
+          tempLabels.push(healthLabel);
+        });
+
+        temp = { recipeName: e.recipe.label, imageUrl: e.recipe.image, urlId: uri, health: tempLabels, visible: true }
         this.searchResult.push(temp);
       });
+      this.healthLabelArray = this.removeDups(this.healthLabelArray);
     });
   }
 
+
+  filterHealth() {
+    console.log(this.filterOption);
+    this.oldResult = this.searchResult;
+    //this.searchResult = [];
+    this.oldResult.forEach(e => {
+      e.health.forEach(x => {
+        //console.log(this.filterOption + " : " + x);
+        if (x != this.filterOption) {
+          console.log(e);
+          this.searchResult.push(e);
+        }
+
+      });
+      //this.searchResult = this.removeDups(this.searchresult)
+    });
+  }
+
+
+  filterResults() {
+    let filter = this.filterOption;
+    if (this.searchResult.length > 0 && filter != "") {
+      console.log(filter);
+      this.searchResult.map(element => {
+        if (!element.health.includes(filter)) {
+          element.visible = false;
+        }
+        else if (element.health.includes(filter)) {
+          element.visible = true;
+        }
+      })
+    }
+  }
+
+  removeDups(arr) {
+    let unique = {};
+    arr.forEach(function (i) {
+      if (!unique[i]) {
+        unique[i] = true;
+      }
+    });
+    return Object.keys(unique);
+  }
 
   submit() {
     this.searchEdamam();
