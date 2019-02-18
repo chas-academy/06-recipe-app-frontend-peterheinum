@@ -1,42 +1,39 @@
-<div class="input-group mb-3 mt-3 ml-3 mb-3">
+<div class="input-group mb-3 mt-3 mb-3">
   <input [(ngModel)]="searchQuery" type="text" class="form-control col-md-6" placeholder="Search for your dish"
     aria-label="Search for dish" aria-describedby="basic-addon2">
-    <!-- <div class="form-check m-1 border rounded">
+  <!-- <div class="form-check m-1 border rounded">
       <input type="checkbox" [(ngModel)]="edamamcheck" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Edamam</label>
     </div> -->
-    <!-- <div class="form-check m-1 border rounded">
+  <!-- <div class="form-check m-1 border rounded">
       <input type="checkbox" [(ngModel)]="yummlycheck" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Yummly</label>
     </div> -->
   <div class="input-group-append ml-3">
     <button class="btn btn-outline-primary rounded" (click)="submit($event)" type="button">Search</button>
-  </div> 
+  </div>
   <!-- *ngIf="searchResult.length" -->
-  <select class="browser-default custom-select col-md-3 ml-2"  [(ngModel)]="filterOption" (change)=filterResults()>
-    <option *ngFor="let i of healthLabelArray" value="{{i}}">{{i}}</option>
-    <!-- <option value="Vegan">vegan</option>
-    <option value="Vegetarian">vegetarian</option>
-    <option value="Sugar-Conscious">sugar-conscious</option>
-    <option value="Low-Carb">low-carb</option>
-    <option value="Low-Fat">low-fat</option> -->
-    <!-- <option value="Peanut-Free">peanut free</option>
-    <option value="Tree-Nut-Free">tree-nut-free</option>
-    <option value="Alcohol-Free">alcohol-free</option>     -->
-  </select> 
+  <select class="browser-default custom-select col-md-2 ml-2" [(ngModel)]="filterOption" (change)=filterResults()>
+    <option *ngFor="let i of healthLabelArray" value="health:{{i}}">Health: {{i}}</option>
+  </select>
+  <select class="browser-default custom-select col-md-2 ml-2" [(ngModel)]="filterOption" (change)=filterResults()>
+    <option *ngFor="let i of dietLabelArray" value="diet:{{i}}">Diet: {{i}}</option>
+  </select>
 </div>
 
 
 
-
-<div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipeDetail of searchResult">
-  <div class="card m-3 ml-5" style="width: 16rem;" *ngIf="recipeDetail.visible">
-    <img src="{{recipeDetail.imageUrl}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{recipeDetail.recipeName}}</h5>
-      <p class="card-text"> Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="#" routerLink="details/{{recipeDetail.recipeName}}&{{recipeDetail.urlId}}" class="btn btn-secondary">Recipe Details</a>
+<div class="p-1">
+  <div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipeDetail of searchResult">
+    <div class="card m-3 ml-5" style="width: 16rem;" *ngIf="recipeDetail.visible">
+      <img src="{{recipeDetail.imageUrl}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{recipeDetail.recipeName}}</h5>
+        <p class="card-text"> Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" routerLink="details/{{recipeDetail.recipeName}}&{{recipeDetail.urlId}}"
+          class="btn btn-secondary">Recipe Details</a>
+      </div>
     </div>
   </div>
 </div>
