@@ -2,14 +2,21 @@
 
 <div class="p-1">
     <div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipe of collection">
-      <div class="card m-3 ml-5" style="width: 16rem;" *ngIf="recipe">
+      <div class="card m-3 ml-5" style="width: 20rem;" *ngIf="recipe">
         <img src="{{recipe.image}}" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{recipe.label}}</h5>
+          <a class="card-title">{{recipe.label}}</a>
           <p class="card-text"></p>
-          <a href="#" routerLink="details/{{recipe.label}}&noID"
-          class="btn btn-secondary">Recipe Details</a>
+          <div>
+          <button href="#" (click)="deleteRecipe(recipe.id)"
+          class="btn btn-danger">Delete Recipe</button>
+          <button href="#" (click)="routeToDetails(recipe.id)"
+          class="btn ml-1 btn-success">Details</button>
+        </div>
         </div>
       </div>
     </div>
   </div>
+
+<!-- 
+  routerLink="details/{{recipe.label}}&noID" -->

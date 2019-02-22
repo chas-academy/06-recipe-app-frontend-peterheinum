@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { RequestResetComponent } from './password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './password/response-reset/response-reset.component';
 import { ListsComponent } from './lists/lists.component';
+import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ListsComponent } from './lists/lists.component';
     RequestResetComponent,
     ResponseResetComponent,
     ListsComponent,
+    UpdateRecipeComponent,
   ],
   imports: [
     BrowserModule,

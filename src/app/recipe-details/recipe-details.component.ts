@@ -12,10 +12,6 @@ import { TokenService } from '../services/token.service';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-
-
-
-
   recipe: any;
   arrayToString(array) {
     let tempstring = "";
@@ -52,8 +48,12 @@ export class RecipeDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.snapshot.snapshot.params['id']);
     this.edamamService.findDetails(this.snapshot.snapshot.params['id']).subscribe(data => {
-      this.recipe = data.hits.map(hit => hit.recipe)
+      this.recipe = data.hits.map(hit => hit.recipe);
+      this.recipe = this.recipe[0];
+      console.log(this.recipe);
     });
+    console.log(this.recipe)
   }
 }

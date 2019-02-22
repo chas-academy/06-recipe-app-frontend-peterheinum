@@ -9,11 +9,11 @@ export class WebcallsService {
 
   constructor(private http: HttpClient) { }
   private baseUrl = 'http://recipebackend.test/api';
-  signup(data){
+  signup(data) {
     return this.http.post(`${this.baseUrl}/signup`, data);
   }
 
-  login(data){
+  login(data) {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
 
@@ -21,8 +21,15 @@ export class WebcallsService {
     return this.http.get(`${this.baseUrl}/getSavedRecipes`);
   }
 
-  saveRecipe(data){
+  saveRecipe(data) {
     return this.http.post(`${this.baseUrl}/saverecipe`, data)
   }
+
+
+  deleteRecipe(recipe) {
+    return this.http.post<any>(`${this.baseUrl}/deleterecipe`, recipe);
+  }
+
+  
 
 }

@@ -49,7 +49,6 @@ export class RecipeListComponent implements OnInit {
     this.edamamService.searchEdamam(query, allergies).subscribe(data => {
       this.searchResult = [];
       data.hits.forEach(e => {
-        console.log(e);
         let temp: any;
         let tempHealthArray = [];
         let tempDietArray = [];

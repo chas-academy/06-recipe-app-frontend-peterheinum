@@ -1,1 +1,10 @@
-<button class="btn-primary p-3" (click)="saveRecipe()"></button>
+<div class="p-1">
+  <div class="card m-3 ml-5" style="width: 20rem;" *ngIf="recipe">
+    <img src="{{recipe.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <a class="card-title">{{recipe.label}}</a>
+      <p class="card-text"></p>
+      <button href="#" (click)="saveRecipe()" class="btn btn-Success">Save Recipe</button>
+    </div>
+  </div>
+</div>
