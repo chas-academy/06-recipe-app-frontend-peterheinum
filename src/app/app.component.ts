@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { YummlyService } from './yummly.service';
-import { EdamamService } from './edamam.service';
+import { YummlyService } from './services/yummly.service';
+import { EdamamService } from './services/edamam.service';
 
 @Component({
   selector: 'app-root',

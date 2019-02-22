@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RecipeService } from './recipe.service';
+import { AfterLoginService } from './after-login.service';
 
-describe('RecipeService', () => {
+describe('AfterLoginService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: RecipeService = TestBed.get(RecipeService);
+    const service: AfterLoginService = TestBed.get(AfterLoginService);
     expect(service).toBeTruthy();
   });
 });

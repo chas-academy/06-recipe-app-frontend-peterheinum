@@ -9,9 +9,9 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { ProfileComponent } from './profile/profile.component';
 import { RequestResetComponent } from './password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './password/response-reset/response-reset.component';
+import { ListsComponent } from './lists/lists.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +21,9 @@ import { ResponseResetComponent } from './password/response-reset/response-reset
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    ListsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../recipe';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { EdamamService } from '../edamam.service';
+import { EdamamService } from '../services/edamam.service';
 
 
 @Component({

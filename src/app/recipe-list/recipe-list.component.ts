@@ -1,11 +1,10 @@
 import { Component, OnInit, Input, NgModule } from '@angular/core';
 import { RecipeDetailsComponent } from '../recipe-details/recipe-details.component';
-import { RecipeService } from "../recipe.service";
 import { Recipe } from '../recipe';
-import { YummlyService } from "../yummly.service";
+import { YummlyService } from "../services/yummly.service";
 import { HttpClient } from "@angular/common/http";
 import { Pipe, PipeTransform } from '@angular/core';
-import { EdamamService } from '../edamam.service';
+import { EdamamService } from '../services/edamam.service';
 import { isUndefined } from 'util';
 
 

@@ -1,3 +1,53 @@
-<p>
-  signup works!
-</p>
+<div class="mt-4 col-8 offset-2">
+  <div class="card">
+    <div class="card-header">Register Here</div>
+    <div class="card-body">
+      <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+
+        <div class="form-group row mt-2 p-1 pl-2">
+          <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input type="name" name="name" [(ngModel)]="form.name" class="form-control" required id="inputName3"
+              placeholder="Name">
+            <div class="alert alert-danger" [hidden]="!error.name">{{error.name}}</div>
+          </div>
+        </div>
+
+        <div class="form-group row mt-2 p-1 pl-2">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" name="email" [(ngModel)]="form.email" class="form-control" required id="inputEmail3"
+              placeholder="Email">
+              <div class="alert alert-danger" [hidden]="!error.email">{{error.email}}</div>
+          </div>
+        </div>
+
+
+        <div class="form-group row p-1 pl-2">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" [(ngModel)]="form.password" required class="form-control"
+              id="inputPassword3" placeholder="Password">
+              <div class="alert alert-danger" [hidden]="!error.password">{{error.password}}</div>
+          </div>
+        </div>
+
+        <div class="form-group row p-1 pl-2">
+          <label for="inputPasswordconfirmation3" class="col-sm-2 col-form-label">Confirm Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="password_confirmation" [(ngModel)]="form.password_confirmation" required
+              class="form-control" id="inputPasswordconfirmation3" placeholder="Type password again">
+          </div>
+        </div>
+
+
+        <div class="form-group row p-1 pl-2">
+          <div class="col-sm-10 offset-2">
+            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Register</button>
+            <button type="button" class="btn btn-info float-right" routerLink="/login">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
