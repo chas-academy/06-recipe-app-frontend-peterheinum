@@ -29,8 +29,12 @@ export class EdamamService {
   }
 
   findDetails = (id) => {
-    let myUrl = `https://api.edamam.com/search?q=${id.split('&')[1]}&app_id=${this.appid}&app_key=${this.appsecret}&from=0&to=1`;
+    let myUrl;
+    if(id.split('&')[1] != "noID") {
+      myUrl = `https://api.edamam.com/search?q=${id.split('&')[1]}&app_id=${this.appid}&app_key=${this.appsecret}&from=0&to=1`;
+    } else {
+      myUrl = `https://api.edamam.com/search?q=${id.split('&')[0]}&app_id=${this.appid}&app_key=${this.appsecret}&from=0&to=1`;
+    }
     return this.httpClient.get<any>(myUrl);
   }
-
 }

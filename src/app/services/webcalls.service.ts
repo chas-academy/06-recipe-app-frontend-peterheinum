@@ -17,8 +17,8 @@ export class WebcallsService {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
 
-  getSavedRecipes(email): Observable<any> {
-    return this.http.get(`${this.baseUrl}/getSavedRecipes/${email}`);
+  getSavedRecipes(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getSavedRecipes`);
   }
 
   saveRecipe(data){

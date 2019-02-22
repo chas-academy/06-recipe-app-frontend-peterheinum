@@ -1,3 +1,15 @@
-<p>
-  lists works!
-</p>
+<h1>My Saved Recipes</h1>
+
+<div class="p-1">
+    <div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipe of collection">
+      <div class="card m-3 ml-5" style="width: 16rem;" *ngIf="recipe">
+        <img src="{{recipe.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{recipe.label}}</h5>
+          <p class="card-text"></p>
+          <a href="#" routerLink="details/{{recipe.label}}&noID"
+          class="btn btn-secondary">Recipe Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
