@@ -30,7 +30,7 @@ export class EdamamService {
 
   findDetails = (id) => {
     let myUrl = `https://api.edamam.com/search?q=${id.split('&')[1]}&app_id=${this.appid}&app_key=${this.appsecret}&from=0&to=1`;
-    return this.httpClient.get(myUrl);
+    return this.httpClient.get<any>(myUrl);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ListserviceService } from '../services/listservice.service';
+import { WebcallsService } from '../services/webcalls.service';
+import { TokenService } from '../services/token.service';
+
 
 @Component({
   selector: 'app-lists',
@@ -8,10 +10,14 @@ import { ListserviceService } from '../services/listservice.service';
 })
 export class ListsComponent implements OnInit {
 
-  constructor(private listservice: ListserviceService) { }
+  constructor(
+    private apiHelper: WebcallsService,
+    private token: TokenService
+  ) { }
 
   ngOnInit() {
-    this.listservice.getSavedRecipes().subscribe(data => {
+    let email = this.token.getEmail();
+    this.apiHelper.getSavedRecipes(email).subscribe(data => {
       console.log(data);
     });
   }

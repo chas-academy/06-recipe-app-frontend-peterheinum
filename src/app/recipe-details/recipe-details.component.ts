@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from '../recipe';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { EdamamService } from '../services/edamam.service';
+import { WebcallsService } from '../services/webcalls.service';
+import { TokenService } from '../services/token.service';
 
 
 @Component({
@@ -12,24 +13,47 @@ import { EdamamService } from '../services/edamam.service';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  recipe = this.snapshot.params.pipe(
-    map(params => params.id),
-    switchMap(id => this.edamamService.findDetails(id)),
-    map((data:any) => data.hits[0].recipe),
-    tap(console.log)
-    )
-    
-    name = this.recipe.pipe(map(recipe => recipe.label));
-    ingredients = this.recipe.pipe(map(recipe => recipe.ingredientLines));
-    image = this.recipe.pipe(map(recipe => recipe.image));
 
+
+
+  recipe: any;
+  arrayToString(array) {
+    let tempstring = "";
+    array.forEach(e => {
+      tempstring = tempstring + e + ";"
+    });
+    return tempstring;
+  }
+
+  saveRecipe() {
+    let dbModel = this.constructDbModel(this.recipe[0]);
+    this.apihelper.saveRecipe(dbModel).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  constructDbModel(data) {
+    console.log(data.healthLabels);
+    let dbModel = {
+      email: this.token.getEmail(),
+      label: data.label,
+      calories: data.calories.toString(),
+      healthLabels: this.arrayToString(data.healthLabels),
+      ingredientLines: this.arrayToString(data.ingredientLines),
+      image: data.image
+    }
+    return dbModel;
+  }
   constructor(
     private snapshot: ActivatedRoute,
     private edamamService: EdamamService,
+    private apihelper: WebcallsService,
+    private token: TokenService
   ) { }
 
   ngOnInit() {
-    
+    this.edamamService.findDetails(this.snapshot.snapshot.params['id']).subscribe(data => {
+      this.recipe = data.hits.map(hit => hit.recipe)
+    });
   }
-
 }

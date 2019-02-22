@@ -1,9 +1,1 @@
-<div>
-  {{name | async}} 
-  <ul class="list-group">
-      <li class="list-group-item" *ngFor="let i of (ingredients | async)">
-        {{i}}
-      </li>
-    </ul>
-    <img src="{{image | async}}" alt="...">
-</div>
+<button class="btn-primary p-3" (click)="saveRecipe()"></button>

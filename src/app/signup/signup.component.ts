@@ -25,8 +25,8 @@ export class SignupComponent implements OnInit {
     private apiHelper: WebcallsService,
     private token: TokenService,
     private router: Router,
-    private auth:AuthService
-    ) { }
+    private auth: AuthService
+  ) { }
 
   ngOnInit() {
   }
@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     );
   }
 
-  handleResponse(data){
+  handleResponse(data) {
     this.token.handle(data.access_token, data.user.email);
     this.auth.changeAuthStatus(true);
     this.router.navigateByUrl('/lists');

@@ -1,11 +1,8 @@
 import { Component, OnInit, Input, NgModule } from '@angular/core';
-import { RecipeDetailsComponent } from '../recipe-details/recipe-details.component';
-import { Recipe } from '../recipe';
 import { YummlyService } from "../services/yummly.service";
 import { HttpClient } from "@angular/common/http";
 import { Pipe, PipeTransform } from '@angular/core';
 import { EdamamService } from '../services/edamam.service';
-import { isUndefined } from 'util';
 
 
 @Component({
@@ -107,9 +104,6 @@ export class RecipeListComponent implements OnInit {
       }
     }
   }
-
-
-
 
   removeDups(arr) {
     let unique = {};
