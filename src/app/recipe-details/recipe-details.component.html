@@ -4,7 +4,8 @@
     <div class="card-body">
       <a class="card-title">{{recipe.label}}</a>
       <p class="card-text"></p>
-      <button href="#" (click)="saveRecipe()" class="btn btn-Success">Save Recipe</button>
+      <button href="#" (click)="saveRecipe()" class="btn btn-success">Save Recipe</button>
+      <div *ngIf="savedstatus">Saved!</div>
     </div>
   </div>
 </div>

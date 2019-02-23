@@ -30,6 +30,10 @@ export class WebcallsService {
     return this.http.post<any>(`${this.baseUrl}/deleterecipe`, recipe);
   }
 
+  updateRecipe(recipe) {
+    return this.http.post<any>(`${this.baseUrl}/updaterecipe`, recipe);
+  }
+
   
 
 }

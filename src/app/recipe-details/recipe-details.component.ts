@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, tap } from 'rxjs/operators';
 import { EdamamService } from '../services/edamam.service';
 import { WebcallsService } from '../services/webcalls.service';
 import { TokenService } from '../services/token.service';
@@ -13,6 +12,7 @@ import { TokenService } from '../services/token.service';
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe: any;
+  savedstatus:boolean;
   arrayToString(array) {
     let tempstring = "";
     array.forEach(e => {
@@ -22,8 +22,9 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   saveRecipe() {
-    let dbModel = this.constructDbModel(this.recipe[0]);
+    let dbModel = this.constructDbModel(this.recipe);
     this.apihelper.saveRecipe(dbModel).subscribe(data => {
+      this.savedstatus == true;
       console.log(data);
     });
   }
@@ -47,13 +48,15 @@ export class RecipeDetailsComponent implements OnInit {
     private token: TokenService
   ) { }
 
+  
+
   ngOnInit() {
+    this.savedstatus = false;
     console.log(this.snapshot.snapshot.params['id']);
     this.edamamService.findDetails(this.snapshot.snapshot.params['id']).subscribe(data => {
       this.recipe = data.hits.map(hit => hit.recipe);
       this.recipe = this.recipe[0];
       console.log(this.recipe);
     });
-    console.log(this.recipe)
   }
 }

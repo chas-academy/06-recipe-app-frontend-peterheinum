@@ -9,8 +9,6 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { RequestResetComponent } from './password/request-reset/request-reset.component';
-import { ResponseResetComponent } from './password/response-reset/response-reset.component';
 import { ListsComponent } from './lists/lists.component';
 import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
 
@@ -22,8 +20,6 @@ import { UpdateRecipeComponent } from './update-recipe/update-recipe.component';
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    RequestResetComponent,
-    ResponseResetComponent,
     ListsComponent,
     UpdateRecipeComponent,
   ],
