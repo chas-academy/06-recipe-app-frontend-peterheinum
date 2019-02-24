@@ -17,14 +17,16 @@ export class ListsComponent implements OnInit {
     private router: Router
   ) { }
   email: any;
+  name:string;
   ngOnInit() {
+    this.name = this.token.getName();
     this.email = this.token.getEmail();
     this.apiHelper.getSavedRecipes().subscribe(response => {
       this.updateCollection(response);
     });
   }
-  editRecipe(label, id) { //TODO make it so that not everybody can edit but the owner. 
-    let UpdateObj = { label: label, id: id }
+  editRecipe(label, id) { //TODO make it so that not everybody can edit but the owner. Send with email
+    let UpdateObj = { label: label, id: id, email: this.email }
     this.apiHelper.updateRecipe(UpdateObj).subscribe(response => {
       this.collection = [];
       this.updateCollection(response);

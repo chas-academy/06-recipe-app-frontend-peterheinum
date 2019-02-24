@@ -1,18 +1,9 @@
 <div class="input-group mb-3 mt-3 mb-3">
-  <input [(ngModel)]="searchQuery" type="text" class="form-control col-md-6" placeholder="Search for your dish"
+  <input [(ngModel)]="searchQuery" type="text" class="form-control col-md-6 ml-1" placeholder="Search for your dish"
     aria-label="Search for dish" aria-describedby="basic-addon2">
-  <!-- <div class="form-check m-1 border rounded">
-      <input type="checkbox" [(ngModel)]="edamamcheck" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Edamam</label>
-    </div> -->
-  <!-- <div class="form-check m-1 border rounded">
-      <input type="checkbox" [(ngModel)]="yummlycheck" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Yummly</label>
-    </div> -->
   <div class="input-group-append ml-3">
     <button class="btn btn-outline-primary rounded" (click)="submit($event)" type="button">Search</button>
   </div>
-  <!-- *ngIf="searchResult.length" -->
   <select class="browser-default custom-select col-md-2 ml-2" [(ngModel)]="filterOption" (change)=filterResults()>
     <option *ngFor="let i of healthLabelArray" value="health:{{i}}">Health: {{i}}</option>
   </select>
@@ -24,8 +15,8 @@
 
 
 <div class="p-1">
-  <div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipeDetail of searchResult">
-    <div class="card m-3 ml-5" style="width: 16rem;" *ngIf="recipeDetail.visible">
+  <div class="row d-inline-block" style="border-radius:5px;" *ngFor="let recipeDetail of searchResult">
+    <div class="card ml-5 mt-3" style="width: 16rem;" *ngIf="recipeDetail.visible">
       <img src="{{recipeDetail.imageUrl}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{recipeDetail.recipeName}}</h5>

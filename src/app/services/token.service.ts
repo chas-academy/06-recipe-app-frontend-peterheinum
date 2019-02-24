@@ -11,10 +11,20 @@ export class TokenService {
   }
   constructor() { }
 
-  handle(token, email) {
+  handle(token, email, name) {
     this.setToken(token);
     this.setEmail(email);
+    this.setName(name);
   }
+
+  setName(name){
+    localStorage.setItem('name', name);
+  }
+
+  getName(){
+    return localStorage.getItem('name');
+  }
+
 
   setEmail(email){
     localStorage.setItem('email', email)
@@ -36,6 +46,7 @@ export class TokenService {
   removeToken() {
     localStorage.removeItem('email');
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
   }
 
   isValid() {

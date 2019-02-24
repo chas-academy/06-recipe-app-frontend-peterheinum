@@ -1,5 +1,5 @@
 <div class="p-1">
-  <div class="card m-3 ml-5" style="width: 20rem;" *ngIf="recipe">
+  <div class="card m-3" style="width: 20rem;" *ngIf="recipe">
     <img src="{{recipe.image}}" class="card-img-top" alt="...">
     <div class="card-body">
       <a class="card-title">{{recipe.label}}</a>
@@ -8,4 +8,22 @@
       <div *ngIf="savedstatus">Saved!</div>
     </div>
   </div>
+</div>
+<div class="jumbotron">
+  <section>
+    <h3>Ingredients</h3>
+    <div *ngFor="let ingredient of recipe.ingredientLines">
+      {{ingredient}}
+      <hr>
+    </div>
+  </section>
+  <section>
+    <h3>Health and diets</h3>
+    <div *ngFor="let healthlabel of recipe.healthLabels">
+      {{healthlabel}}
+    </div>
+    <div *ngFor="let dietlabel of recipe.dietLabels">
+      {{dietlabel}}
+    </div>
+  </section>
 </div>

@@ -1,25 +1,19 @@
-<h1>My Saved Recipes</h1>
+<h2>{{name}}s saved recipes</h2>
 
 <div class="p-1">
-    <div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipe of collection">
-      <div class="card m-3 ml-5" style="width: 18rem;" *ngIf="recipe">
-        <img src="{{recipe.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <a class="card-title">{{recipe.label}}</a>
-          <p class="card-text"></p>
-          <div>
-          <button href="#" (click)="deleteRecipe(recipe.id)"
-          class="btn btn-danger">Delete Recipe</button>
-          <button href="#" (click)="routeToDetails(recipe.id)"
-          class="btn ml-1 btn-success">Details</button>
+  <div class="row d-inline-block" style="border-radius:5px; width:100wv;" *ngFor="let recipe of collection">
+    <div class="card m-3 ml-5" style="width: 18rem;" *ngIf="recipe">
+      <img src="{{recipe.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <a class="card-title">{{recipe.label}}</a>
+        <p class="card-text"></p>
+        <div>
+          <button href="#" (click)="deleteRecipe(recipe.id)" class="btn btn-danger">Delete Recipe</button>
+          <button href="#" (click)="routeToDetails(recipe.id)" class="btn ml-1 btn-success">Details</button>
           <input type="text" [(ngModel)]="recipe.label">
-          <button href="#" (click)="editRecipe(recipe.label, recipe.id)"
-          class="btn mt-1 btn-secondary">Edit</button>
-        </div>
+          <button href="#" (click)="editRecipe(recipe.label, recipe.id)" class="btn mt-1 btn-secondary">Edit</button>
         </div>
       </div>
     </div>
   </div>
-
-<!-- 
-  routerLink="details/{{recipe.label}}&noID" -->
+</div>
