@@ -21,7 +21,7 @@ export class ListsComponent implements OnInit {
   ngOnInit() {
     this.name = this.token.getName();
     this.email = this.token.getEmail();
-    this.apiHelper.getSavedRecipes().subscribe(response => {
+    this.apiHelper.getSavedRecipes(this.email).subscribe(response => {
       this.updateCollection(response);
     });
   }

@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
     email: null,
     name: null,
     password: null,
-    password_confimation: null
+    password_confirmation: null
   };
 
   constructor(
